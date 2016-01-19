@@ -118,7 +118,7 @@ Fetcher.prototype.calculateNextFetch = function(trades) {
     ]);
     this.fetchAfter = util.minToMs(min);
     // debugging bitstamp
-    this.fetchAfter = util.minToMs(1);
+    // this.fetchAfter = util.minToMs(1);
     return;  
   }
     
@@ -140,9 +140,13 @@ Fetcher.prototype.calculateNextFetch = function(trades) {
     var fetchAfter = defaultFetchTime;
   else
     // use a safe fetch time to determine
+  //if(this.fetchTimespan)
     var fetchAfter = this.fetchTimespan * safeTreshold;
-
+  //else
+  //  this.fetchtimespan = 5;
+    
   this.fetchAfter = fetchAfter;
+  console.log("This is fetchAfter value from tradeFetcherjs: ", this.fetchAfter)
 }
 
 Fetcher.prototype.scheduleNextFetch = function() {
